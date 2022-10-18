@@ -1,0 +1,12 @@
+# Ide
+
+.idea
+
+# Node
+
+node_modules
+dist
+
+# Other
+
+*.tmp.*
