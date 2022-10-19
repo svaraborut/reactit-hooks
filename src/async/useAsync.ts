@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { PromiseFn } from './types';
 import { usePromise } from './usePromise';
+import { useLatest } from '../generic/useLatest';
 
 /**
  * An asynchronous wrapping function, that enables use of async functions within
@@ -14,7 +15,7 @@ import { usePromise } from './usePromise';
 export interface UseAsyncState<Res, Err> {
     isLoading: boolean
     isCompleted: boolean
-    isSucceeded: boolean
+    isSucceed: boolean
     isFailed: boolean
     result?: Res
     error?: Err
@@ -29,6 +30,8 @@ export function useAsync<Res = void, Args extends any[] = [], Err = any>(
     fn: PromiseFn<Args, Res>,
 ): UseAsyncReturn<Res, Args, Err> {
 
+    const lastFn = useLatest(fn)
+
     // Unique call id to handle concurrency
     const callIdRef = useRef(0)
 
@@ -36,24 +39,24 @@ export function useAsync<Res = void, Args extends any[] = [], Err = any>(
     const [state, setState] = useState<UseAsyncState<Res, Err>>({
         isLoading: false,
         isCompleted: false,
-        isSucceeded: false,
+        isSucceed: false,
         isFailed: false,
     });
 
     const runAsync = useCallback<PromiseFn<Args, Res>>(async (...args: Args) => {
         const callId = ++callIdRef.current
 
-        setState({ isLoading: true, isCompleted: false, isSucceeded: false, isFailed: false })
+        setState({ isLoading: true, isCompleted: false, isSucceed: false, isFailed: false })
         try {
             // Execute
-            const result = await fn(...args)
+            const result = await lastFn.current(...args)
             if (callIdRef.current === callId) {
-                setState({ isLoading: false, isCompleted: true, isSucceeded: true, isFailed: false, result })
+                setState({ isLoading: false, isCompleted: true, isSucceed: true, isFailed: false, result })
             }
             return result
         } catch (error) {
             if (callIdRef.current === callId) {
-                setState({ isLoading: false, isCompleted: true, isSucceeded: false, isFailed: true, error })
+                setState({ isLoading: false, isCompleted: true, isSucceed: false, isFailed: true, error })
             }
             throw error
         }
