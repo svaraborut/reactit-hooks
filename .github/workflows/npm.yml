@@ -2,6 +2,13 @@ name: Build and publish to npmjs
 on:
   release:
     types: [created]
+  push:
+    branches:
+      - main
+    tags:
+      - v**
+#    paths:
+#      - package.json
 jobs:
   build:
     runs-on: ubuntu-latest

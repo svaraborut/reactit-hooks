@@ -1,6 +1,10 @@
 
 export type HookAction<V, Args extends any[]> = V | ((...args: Args) => V);
 
+export function resolveHookInitialValue<V>(initialValue?: V | (() => V)) {
+    return typeof initialValue === 'function' ? (initialValue as any)() : initialValue;
+}
+
 export function resolveHookAction<V, Args extends any[]>(action: HookAction<V, Args>, ...args: Args): V {
     return typeof action === 'function' ? (action as any)(...args) : action;
 }

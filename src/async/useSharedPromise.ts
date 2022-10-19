@@ -19,6 +19,10 @@ import { areArgsEqual } from '../utils';
  * (?) Returned task is assured to be stable, an old result instance will
  * always call the most fresh task.
  *
+ * todo : if fn includes states that change a sequence such is:
+ *      call() -> setState() -> call() ...... return
+ *      may return unexpected values to the the second call.
+ *
  * /B 2022-10-19
  */
 export function useSharedPromise<Res, Args extends any[] = []>(fn: PromiseFn<Args, Res>): PromiseFn<Args, Res> {
