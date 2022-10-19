@@ -9,9 +9,9 @@ import { usePromise } from './usePromise';
  * same or will throw if arguments have changed.
  */
 
-export function useSharedAsync<Args extends any[] = [], Res = void, Err = any>(
+export function useSharedAsync<Res = void, Args extends any[] = [], Err = any>(
     fn: PromiseFn<Args, Res>,
-): UseAsyncReturn<Args, Res, Err> {
+): UseAsyncReturn<Res, Args, Err> {
 
     const { runAsync: oldRunAsync, run: oldRun, ...rest } = useAsync(fn);
     const runAsync = useSharedPromise(oldRunAsync)

@@ -15,12 +15,12 @@ import { useLatest } from '../generic/useLatest';
  *
  * /B 2022-10-19
  */
-export function useExclusivePromise<R, A extends any[] = []>(fn: PromiseFn<A, R>): PromiseFn<A, R> {
+export function useExclusivePromise<Res, Args extends any[] = []>(fn: PromiseFn<Args, Res>): PromiseFn<Args, Res> {
 
     const lastFn = useLatest(fn)
     const isExecuting = useRef<boolean>(false)
 
-    return useCallback(async (...args: A): Promise<R> => {
+    return useCallback(async (...args: Args): Promise<Res> => {
         if (isExecuting.current) {
             throw new ConcurrencyError(`Promise is already running`)
         } else {

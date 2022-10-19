@@ -20,14 +20,14 @@ export interface UseAsyncState<Res, Err> {
     error?: Err
 }
 
-export interface UseAsyncReturn<Args extends any[] = [], Res = void, Err = any> extends UseAsyncState<Res, Err>{
+export interface UseAsyncReturn<Res = void, Args extends any[] = [], Err = any> extends UseAsyncState<Res, Err>{
     run: (...args: Args) => void
     runAsync: PromiseFn<Args, Res>
 }
 
-export function useAsync<Args extends any[] = [], Res = void, Err = any>(
+export function useAsync<Res = void, Args extends any[] = [], Err = any>(
     fn: PromiseFn<Args, Res>,
-): UseAsyncReturn<Args, Res, Err> {
+): UseAsyncReturn<Res, Args, Err> {
 
     // Unique call id to handle concurrency
     const callIdRef = useRef(0)

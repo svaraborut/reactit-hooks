@@ -14,7 +14,7 @@ A repository of `React` components
 
 # Hooks
 
-## Async
+### Async hooks
 
 | Name                  | Behaviour                                                            | todo |
 |-----------------------|----------------------------------------------------------------------|------|
@@ -28,3 +28,19 @@ A repository of `React` components
 | `useSharedAsync2`     | Last call is the only one effective, all resolve with the last value |      |
 |                       |                                                                      |      |
 | `useQuery`            | Similar to task, but runs when dependencies changes                  |      |
+
+### Browser hooks
+
+
+### Dom hooks
+
+
+### Generic hooks
+
+
+### Navigation hooks
+
+
+### State hooks
+
+

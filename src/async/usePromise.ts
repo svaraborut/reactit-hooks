@@ -13,11 +13,11 @@ import { useLatest } from '../generic/useLatest';
  *
  * /B 2022-10-19
  */
-export function usePromise<R, A extends any[] = []>(fn: PromiseFn<A, R>): DispatchFn<A> {
+export function usePromise<Res, Args extends any[] = []>(fn: PromiseFn<Args, Res>): DispatchFn<Args> {
 
     const lastFn = useLatest(fn)
 
-    return useCallback((...args: A) => {
+    return useCallback((...args: Args) => {
         lastFn.current.apply(undefined, ...args).catch((error: any) => {
             console.debug(`usePromise collected an error ${fn.name}`, error)
         })

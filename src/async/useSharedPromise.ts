@@ -21,19 +21,19 @@ import { areArgsEqual } from '../utils';
  *
  * /B 2022-10-19
  */
-export function useSharedPromise<R, A extends any[] = []>(fn: PromiseFn<A, R>): PromiseFn<A, R> {
+export function useSharedPromise<Res, Args extends any[] = []>(fn: PromiseFn<Args, Res>): PromiseFn<Args, Res> {
 
     const lastFn = useLatest(fn)
-    const stack = useRef<{ args: A, res: ((v: R) => void)[], rej: ((e: any) => void)[] } | undefined>()
+    const stack = useRef<{ args: Args, res: ((v: Res) => void)[], rej: ((e: any) => void)[] } | undefined>()
 
-    return useCallback(async (...args: A): Promise<R> => {
-        return new Promise<R>((res, rej) => {
+    return useCallback(async (...args: Args): Promise<Res> => {
+        return new Promise<Res>((res, rej) => {
             if (!stack.current) {
                 // First execution
                 stack.current = { args, res: [res], rej: [rej] }
 
                 lastFn.current.apply(undefined, args)
-                    .then((r: R) => {
+                    .then((r: Res) => {
                         stack.current?.res.forEach(f => f(r))
                         stack.current = undefined
                     })
