@@ -3,7 +3,7 @@ import { DispatchFn, PromiseFn } from './types';
 import { useLatest } from '../generic/useLatest';
 
 /**
- * Wraps a promise and returns a plain function to be used inside sync functions
+ * Wraps an async function and returns a plain function to be used inside sync functions
  * and component callbacks, any exceptions will catch and console.debug() for
  * development purposes.
  *

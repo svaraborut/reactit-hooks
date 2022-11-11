@@ -15,6 +15,7 @@ import { getStorage, MultiValue, readStorageMulti, setStorageMulti, StorageTypes
  *     Keep in mind that store keys may be anyhow deleted, so never
  *     give for granted their presence (not their pairwise presence)
  *
+ * /B 2022-10-19
  */
 
 export function useStorage<S extends MultiValue>(

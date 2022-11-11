@@ -3,7 +3,7 @@ import { PromiseFn, ConcurrencyError } from './types';
 import { useLatest } from '../generic/useLatest';
 
 /**
- * Wraps a promise such that only one call at-a-time may be in execution,
+ * Wraps an async function such that only one call at-a-time may be in execution,
  * any attempt to call the promise while another execution is in progress
  * will result in the second call throwing an exception.
  *

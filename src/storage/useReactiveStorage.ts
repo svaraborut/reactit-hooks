@@ -7,6 +7,8 @@ import { useLatest } from '../generic/useLatest';
 /**
  * Same as useStorage() but does enable dynamic storage updates by
  * subscribing to the window `storage` event.
+ *
+ * /B 2022-10-19
  */
 
 export function useReactiveStorage<S extends MultiValue>(

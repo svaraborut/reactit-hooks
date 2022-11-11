@@ -5,6 +5,8 @@ import { getStorage, StorageTypes } from './storage';
 /**
  * Offers an abstraction layer atop SessionStorage and LocalStorage.
  * This hook is similar to useStorage() but handle a single value.
+ *
+ * /B 2022-10-19
  */
 
 export function useStorageValue<S>(
