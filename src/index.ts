@@ -25,6 +25,7 @@ export * from './state/useDefault';
 export * from './state/usePatch';
 export * from './state/useReset';
 
+export * from './storage/storage';
 export * from './storage/useLocalStorageValue';
 export * from './storage/useReactiveStorage';
 export * from './storage/useSessionStorageValue';

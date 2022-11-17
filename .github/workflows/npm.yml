@@ -3,8 +3,8 @@ on:
   release:
     types: [created]
   push:
-    branches:
-      - main
+#    branches:
+#      - main
     tags:
       - v**
 #    paths:
