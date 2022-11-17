@@ -11,8 +11,13 @@ export * from './async/useSharedPromise';
 export * from './browser/useIsMobile';
 
 export * from './dom/useEvent';
+export * from './dom/useGlobalTag';
 
 export * from './effect/useScheduledEffect';
+
+export * from './files/useDownload';
+export * from './files/useFileSelect';
+export * from './files/useFileSelectState';
 
 export * from './generic/useLatest';
 export * from './generic/usePrevious';

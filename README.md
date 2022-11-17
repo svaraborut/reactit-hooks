@@ -7,31 +7,84 @@ here.
 
 # Hooks
 
+## Async
+
+| Name                  | Description                                                |
+|-----------------------|------------------------------------------------------------|
+| `useAsync`            | Handle async functions inside react rendering cycles       |
+| `useAsyncEffect`      | Same as `useEffect` but for async functions                |
+| `useExclusivePromise` | Wraps an async function preventing concurrent calls        |
+| `usePromise`          | Convert an async function to a sync one and logs the error |
+| `useQuery`            | Similar to `useAsync` but automatically run on mount       |
+| `useSharedAsync`      | Same as `useAsync` but calls to async function are shared  |
+| `useSharedPromise`    | Wraps an async function joining concurrent calls           |
+
+## Browser
+
+| Name           | Description                                    |
+|----------------|------------------------------------------------|
+| `useIsMobile`  | Simple detect of mobile devices by `userAgent` |
+
+## Dom
+
+| Name           | Description                        |
+|----------------|------------------------------------|
+| `useEvent`     | An effect to subscribe to an event |
+| `useGlobalTag` | Handles global tag life cycle      |
+
+## Effects
+
+| Name                 | Description                                  |
+|----------------------|----------------------------------------------|
+| `useScheduledEffect` | An effect that executes at a specific `Date` |
+
+> todo : move to Time
+
+## Files
+
+| Name                 | Description                                                                     |
+|----------------------|---------------------------------------------------------------------------------|
+| `useDownload`        | Handles download of an `url` using the browser builtin download functionalities |
+| `useFileSelect`      | Prompts the user to select files through the builtin file selection modal       |
+| `useFileSelectState` | Same as `useFileSelect` but is a state                                          |
+
+## Generic
+
 | Name                     | Description                                                |
 |--------------------------|------------------------------------------------------------|
-| `useAsync`               | Handle async functions inside react rendering cycles       |
-| `useAsyncEffect`         | Same as `useEffect` but for async functions                |
-| `useExclusivePromise`    | Wraps an async function preventing concurrent calls        |
-| `usePromise`             | Convert an async function to a sync one and logs the error |
-| `useQuery`               | Similar to `useAsync` but automatically run on mount       |
-| `useSharedAsync`         | Same as `useAsync` but calls to async function are shared  |
-| `useSharedPromise`       | Wraps an async function joining concurrent calls           |
-| `useIsMobile`            | Simple detect of mobile devices by `userAgent`             |
-| `useEvent`               | An effect to subscribe to an event                         |
-| `useScheduledEffect`     | An effect that executes at a specific `Date`               |
 | `useLatest`              |                                                            |
 | `usePrevious`            |                                                            |
+
+## Navigation
+
+| Name                     | Description                                                |
+|--------------------------|------------------------------------------------------------|
 | `useHref`                |                                                            |
 | `useLocation`            |                                                            |
 | `useSearchParam`         |                                                            |
+
+## State
+
+| Name                     | Description                                                |
+|--------------------------|------------------------------------------------------------|
 | `useDefault`             |                                                            |
 | `usePatch`               |                                                            |
 | `useReset`               |                                                            |
+
+## Storage
+
+| Name                     | Description                                                |
+|--------------------------|------------------------------------------------------------|
 | `useLocalStorageValue`   |                                                            |
 | `useReactiveStorage`     |                                                            |
 | `useSessionStorageValue` |                                                            |
 | `useStorage`             |                                                            |
 | `useStorageValue`        |                                                            |
+
+## Time
+
+| Name                     | Description                                                |
+|--------------------------|------------------------------------------------------------|
 | `useInterval`            |                                                            |
 
 ### `useAsync`
