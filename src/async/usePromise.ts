@@ -18,7 +18,7 @@ export function usePromise<Res, Args extends any[] = []>(fn: PromiseFn<Args, Res
     const lastFn = useLatest(fn)
 
     return useCallback((...args: Args) => {
-        lastFn.current.apply(undefined, ...args).catch((error: any) => {
+        lastFn.current.apply(undefined, args).catch((error: any) => {
             console.debug(`usePromise collected an error ${fn.name}`, error)
         })
     }, [])
