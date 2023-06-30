@@ -12,7 +12,7 @@ import { DependencyList, useEffect } from 'react';
  *     the one that is affecting the state.
  */
 
-export interface UseQueryReturn<Res = void, Err = any> extends UseAsyncState<Res, Err> {
+export interface UseQueryReturn<Res = void, Err = any> extends UseAsyncState<Res, [], Err> {
     reloadAsync: AsyncFn<Res>
     reload: CallFn
 }
