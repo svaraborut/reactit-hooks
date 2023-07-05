@@ -19,6 +19,7 @@ export * from './files/useDownload';
 export * from './files/useFileSelect';
 export * from './files/useFileSelectState';
 
+export * from './generic/useLatestCallback';
 export * from './generic/useLatest';
 export * from './generic/usePrevious';
 
