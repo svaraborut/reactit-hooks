@@ -3,7 +3,7 @@
   "description": "Hook collection for React",
   "author": "Borut Svara <borut@svara.io>",
   "license": "ISC",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

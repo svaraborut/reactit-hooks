@@ -50,10 +50,11 @@ here.
 
 ## Generic
 
-| Name                     | Description                                                |
-|--------------------------|------------------------------------------------------------|
-| `useLatest`              |                                                            |
-| `usePrevious`            |                                                            |
+| Name                | Description                                                |
+|---------------------|------------------------------------------------------------|
+| `useLatest`         |                                                            |
+| `useLatestCallback` |                                                            |
+| `usePrevious`       |                                                            |
 
 ## Navigation
 
