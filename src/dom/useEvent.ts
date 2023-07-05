@@ -44,9 +44,11 @@ export function useEvent<T extends UseEventTarget>(
         const _names = Array.isArray(name) ? name : [name]
         const inHandler = (event?: any) => (latest.current as any)?.(event)
 
-        _names.forEach(name => (_target?.addEventListener ?? _target?.on)?.(name, inHandler))
+        const _on = _target?.addEventListener ?? _target?.on;
+        _on && _names.forEach(name => _on.call(_target, name, inHandler))
         return () => {
-            _names.forEach(name => (_target?.removeEventListener ?? _target?.off)?.(name, inHandler))
+            const _off = _target?.removeEventListener ?? _target?.off
+            _off && _names.forEach(name => _off.call(_target, name, inHandler))
         }
 
     }, [name, target])
