@@ -1,9 +1,42 @@
 
-export type StorageTypes = 'sessionStorage' | 'localStorage'
+export type StorageTypes = 'sessionStorage' | 'localStorage' | 'ram'
 export type MultiValue = { [K: string]: any }
 
+// Simple implementation of a Storage that will hold the values in ram
+class RamStorage implements Storage {
+
+    get length() {
+        return Object.keys(this).length
+    }
+
+    clear() {
+        for (const key of Object.keys(this)) {
+            delete this[key]
+        }
+    }
+
+    getItem(key: string): string | null {
+        return this[key] ?? null
+    }
+
+    key(index: number): string | null {
+        return Object.keys(this)[index] ?? null
+    }
+
+    removeItem(key: string) {
+        delete this[key]
+    }
+
+    setItem(key: string, value: string) {
+        this[key] = value
+    }
+
+}
+
+const ramStorage = new RamStorage()
+
 export function getStorage(type: StorageTypes) {
-    return type === 'sessionStorage' ? window.sessionStorage : window.localStorage;
+    return type === 'ram' ? ramStorage : type === 'sessionStorage' ? window.sessionStorage : window.localStorage;
 }
 
 // Collect all values starting with a prefix and strip them of the prefix
