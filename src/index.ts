@@ -38,4 +38,6 @@ export * from './storage/useSessionStorageValue';
 export * from './storage/useStorage';
 export * from './storage/useStorageValue';
 
+export * from './time/useInterval';
+
 export * from './utils';
