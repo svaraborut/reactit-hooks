@@ -181,3 +181,4 @@ const fn = useSharedPromise(async (...args) => { ... })
 
 - Some cookie hooks
 - Some JWT hooks [See](https://www.npmjs.com/package/react-jwt)
+- change testing library form `@testing-library/react-hooks` to `@testing-library/react` (needed to use react 18)
