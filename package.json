@@ -6,9 +6,8 @@
     "Matteo Scorcia"
   ],
   "license": "ISC",
-  "version": "0.1.13",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "version": "0.1.14",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rollup -c",

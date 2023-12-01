@@ -14,15 +14,8 @@ export default [
         input: 'src/index.ts',
         output: [
             {
-                // todo : is cjs required ?
-                file: 'dist/cjs/index.js',
-                format: 'cjs',
-                sourcemap: true,
-            },
-            {
-                file: 'dist/esm/index.js',
+                file: 'dist/index.js',
                 format: 'esm',
-                sourcemap: true,
             },
         ],
         external: [...Object.keys(pkg.peerDependencies || {})],
@@ -34,7 +27,7 @@ export default [
     },
     // compact the types
     {
-        input: 'dist/esm/types/index.d.ts',
+        input: 'dist/types/index.d.ts',
         output: [{ file: 'dist/index.d.ts', format: 'esm' }],
         plugins: [dts()],
     },

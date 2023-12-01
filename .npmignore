@@ -9,5 +9,6 @@ src
 test
 
 jest.config.ts
+rollup.config.mjs
 package-lock.json
 tsconfig.json
