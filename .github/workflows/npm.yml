@@ -3,25 +3,28 @@ on:
   release:
     types: [created]
   push:
-#    branches:
-#      - main
     tags:
       - v**
-#    paths:
-#      - package.json
+
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v3
+
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '22'
           registry-url: 'https://registry.npmjs.org'
+
+      # npm Trusted Publishing requires npm >= 11.5.1; Node 22 ships with npm 10.
+      - run: npm install -g npm@latest
+
       - run: npm ci
       - run: npm run test
       - run: npm run build
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm publish --provenance
